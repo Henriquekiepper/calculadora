@@ -1,115 +1,119 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seu Nome - Portfólio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Calculadora</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .fundo{
+            background-color: #201b2c;
+            height: 100vh;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+        .calculadora{
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.8);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border-radius: 15px;
+            padding: 15px;
+        }
+        .botao{
+            width: 50px;
+            height: 50px;
+            font-size: 25px;
+            cursor: pointer;
+            margin: 3px;
+            background-color: rgb(31,31,31);
+            border: none;
+            color: #77ffc0;
+        }
+        .botao:hover{
+            background-color: black;
+        }
+        #resultado{
+            background-color: white;
+            width: 207px;
+            height: 30px;
+            margin: 5px;
+            font-size: 25px;
+            color: black;
+            text-align: right;
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="#home" class="logo">Seu Nome</a>
-            <ul>
-                <li><a href="#home">Sobre Mim</a></li>
-                <li><a href="#projetos">Projetos</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h1>Olá, eu sou [Seu Nome Completo]</h1>
-                <h2>[Sua Especialidade/Profissão, ex: Desenvolvedor Web Front-end]</h2>
-                <p>Uma breve e impactante descrição sobre quem você é, o que faz e o que te motiva. Destaque suas principais qualidades e o que você busca profissionalmente.</p>
-                <a href="#projetos" class="btn">Ver Meus Projetos</a>
-            </div>
-            <div class="hero-image">
-                <!-- Uma imagem sua ou um ícone que represente você -->
-            </div>
-        </section>
-
-        <!-- Seções para Habilidades e Experiência -->
-        <section id="habilidades" class="section">
-            <h2>Minhas Habilidades</h2>
-            <div class="skills-grid">
-                <div class="skill-item">HTML5</div>
-                <div class="skill-item">CSS3</div>
-                <div class="skill-item">JavaScript</div>
-                <div class="skill-item">React</div>
-                <div class="skill-item">Node.js</div>
-                <div class="skill-item">UI/UX Design</div>
-                <!-- Adicione mais habilidades aqui -->
-            </div>
-        </section>
-
-        <section id="experiencia" class="section">
-            <h2>Experiência Profissional</h2>
-            <div class="job-item">
-                <h3>[Seu Cargo] em [Nome da Empresa]</h3>
-                <p>[Período: Mês/Ano - Mês/Ano]</p>
-                <ul>
-                    <li>Descrição breve das suas responsabilidades e conquistas.</li>
-                    <li>Outro ponto relevante.</li>
-                </ul>
-            </div>
-            <div class="job-item">
-                <h3>[Seu Cargo] em [Nome da Empresa Anterior]</h3>
-                <p>[Período: Mês/Ano - Mês/Ano]</p>
-                <ul>
-                    <li>Descrição breve das suas responsabilidades e conquistas.</li>
-                    <li>Outro ponto relevante.</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Seção de Projetos no mesmo arquivo ou em um novo -->
-<section id="projetos" class="section">
-    <h2>Meus Projetos</h2>
-    <div class="projects-grid">
-        <div class="project-card">
-            <img src="https://via.placeholder.com/400x250?text=Projeto+1" alt="Imagem do Projeto 1">
-            <h3>Nome do Projeto 1</h3>
-            <p>Uma breve descrição sobre o projeto, quais tecnologias foram usadas e qual problema ele resolve.</p>
-            <div class="project-links">
-                <a href="#" target="_blank" class="btn-small">Ver Demo</a>
-                <a href="#" target="_blank" class="btn-small">GitHub</a>
-            </div>
+    <div class="fundo">
+        <div class="calculadora">
+            <h1>Calculadora</h1>
+            <p id="resultado"></p>
+            <table>
+                <tr>
+                    <td><button class="botao" onclick="clean()">C</button></td>
+                    <td><button class="botao" onclick="back()"><</button></td>
+                    <td><button class="botao" onclick="insert('/')">/</button></td>
+                    <td><button class="botao" onclick="insert('*')">X</button></td>
+                </tr>
+                <tr>
+                    <td><button class="botao" onclick="insert('7')">7</button></td>
+                    <td><button class="botao" onclick="insert('8')">8</button></td>
+                    <td><button class="botao" onclick="insert('9')">9</button></td>
+                    <td><button class="botao" onclick="insert('-')">-</button></td>
+                </tr>
+                <tr>
+                    <td><button class="botao" onclick="insert('4')">4</button></td>
+                    <td><button class="botao" onclick="insert('5')">5</button></td>
+                    <td><button class="botao" onclick="insert('6')">6</button></td>
+                    <td><button class="botao" onclick="insert('+')">+</button></td>
+                </tr>
+                <tr>
+                    <td><button class="botao" onclick="insert('1')">1</button></td>
+                    <td><button class="botao" onclick="insert('2')">2</button></td>
+                    <td><button class="botao" onclick="insert('3')">3</button></td>
+                    <td rowspan="2"><button class="botao" style="height: 106px;" onclick="calcular()">=</button></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button class="botao" style="width: 106px;" onclick="insert('0')">0</button></td>
+                    <td><button class="botao" onclick="insert('.')">.</button></td>
+                </tr>
+            </table>
         </div>
-        <div class="project-card">
-            <img src="https://via.placeholder.com/400x250?text=Projeto+2" alt="Imagem do Projeto 2">
-            <h3>Nome do Projeto 2</h3>
-            <p>Uma breve descrição sobre o projeto, quais tecnologias foram usadas e qual problema ele resolve.</p>
-            <div class="project-links">
-                <a href="#" target="_blank" class="btn-small">Ver Demo</a>
-                <a href="#" target="_blank" class="btn-small">GitHub</a>
-            </div>
-        </div>
-        <div class="project-card">
-            <img src="https://via.placeholder.com/400x250?text=Projeto+3" alt="Imagem do Projeto 3">
-            <h3>Nome do Projeto 3</h3>
-            <p>Uma breve descrição sobre o projeto, quais tecnologias foram usadas e qual problema ele resolve.</p>
-            <div class="project-links">
-                <a href="#" target="_blank" class="btn-small">Ver Demo</a>
-                <a href="#" target="_blank" class="btn-small">GitHub</a>
-            </div>
-        </div>
-        <!-- Adicione mais projetos aqui -->
     </div>
-</section>
-    </main>
-
-    <footer>
-        <p>&copy; 2023 Seu Nome. Todos os direitos reservados.</p>
-        <div class="social-links">
-            <a href="#" target="_blank">LinkedIn</a>
-            <a href="#" target="_blank">GitHub</a>
-            <a href="#" target="_blank">Instagram</a>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+    <script>
+        function insert(num)
+        {
+            var numero = document.getElementById('resultado').innerHTML;
+            document.getElementById('resultado').innerHTML = numero + num;
+        }
+        function clean()
+        {
+            document.getElementById('resultado').innerHTML = "";
+        }
+        function back()
+        {
+            var resultado = document.getElementById('resultado').innerHTML;
+            document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length -1);
+        }
+        function calcular()
+        {
+            var resultado = document.getElementById('resultado').innerHTML;
+            if(resultado)
+            {
+                document.getElementById('resultado').innerHTML = eval(resultado);
+            }
+            else
+            {
+                document.getElementById('resultado').innerHTML = "Sem calculos"
+            }
+        }
+    </script>
 </body>
 </html>
